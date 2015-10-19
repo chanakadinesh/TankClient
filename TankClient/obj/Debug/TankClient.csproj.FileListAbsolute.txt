@@ -7,3 +7,6 @@ C:\Users\User\Documents\tank game\TankClient\TankClient\obj\Debug\TankClient.Pro
 C:\Users\User\Documents\tank game\TankClient\TankClient\obj\Debug\TankClient.csproj.GenerateResource.Cache
 C:\Users\User\Documents\tank game\TankClient\TankClient\obj\Debug\TankClient.exe
 C:\Users\User\Documents\tank game\TankClient\TankClient\obj\Debug\TankClient.pdb
+D:\TankGame\TankClient\TankClient\bin\Debug\TankClient.exe.config
+D:\TankGame\TankClient\TankClient\obj\Debug\TankClient.exe
+D:\TankGame\TankClient\TankClient\obj\Debug\TankClient.pdb
