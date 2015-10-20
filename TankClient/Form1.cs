@@ -35,7 +35,7 @@ namespace TankClient
                 this.Invoke(new Action<string>(DisplayServerMessage), new object[] { msg });
                 return;
             }
-            serverDisplay.Text = msg + "\r\n";
+            serverDisplay.Text += msg + "\r\n";
             //  serverDisplay.ScrollToCaret();
         }
 
