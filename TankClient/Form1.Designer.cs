@@ -33,10 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.connect_btn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.send_btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.display = new System.Windows.Forms.TextBox();
+            this.up_btn = new System.Windows.Forms.Button();
+            this.left_btn = new System.Windows.Forms.Button();
+            this.down_btn = new System.Windows.Forms.Button();
+            this.right_btn = new System.Windows.Forms.Button();
+            this.shoot_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // serverDisplay
@@ -76,43 +79,13 @@
             // connect_btn
             // 
             this.connect_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connect_btn.Location = new System.Drawing.Point(35, 38);
+            this.connect_btn.Location = new System.Drawing.Point(91, 104);
             this.connect_btn.Name = "connect_btn";
-            this.connect_btn.Size = new System.Drawing.Size(448, 34);
+            this.connect_btn.Size = new System.Drawing.Size(105, 53);
             this.connect_btn.TabIndex = 1;
             this.connect_btn.Text = "Connect Client";
             this.connect_btn.UseVisualStyleBackColor = true;
             this.connect_btn.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "0";
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "NONE",
-            "UP",
-            "DOWN",
-            "LEFT",
-            "RIGHT",
-            "SHOOT"});
-            this.comboBox1.Location = new System.Drawing.Point(35, 123);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(152, 24);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.ValueMember = "0";
-            // 
-            // send_btn
-            // 
-            this.send_btn.Enabled = false;
-            this.send_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.send_btn.Location = new System.Drawing.Point(218, 123);
-            this.send_btn.Name = "send_btn";
-            this.send_btn.Size = new System.Drawing.Size(75, 26);
-            this.send_btn.TabIndex = 4;
-            this.send_btn.Text = "Send";
-            this.send_btn.UseVisualStyleBackColor = true;
-            this.send_btn.Click += new System.EventHandler(this.send_btn_Click);
             // 
             // label2
             // 
@@ -134,15 +107,68 @@
             this.display.Size = new System.Drawing.Size(448, 52);
             this.display.TabIndex = 6;
             // 
+            // up_btn
+            // 
+            this.up_btn.Location = new System.Drawing.Point(357, 56);
+            this.up_btn.Name = "up_btn";
+            this.up_btn.Size = new System.Drawing.Size(41, 41);
+            this.up_btn.TabIndex = 7;
+            this.up_btn.Text = "U";
+            this.up_btn.UseVisualStyleBackColor = true;
+            this.up_btn.Click += new System.EventHandler(this.up_btn_Click);
+            // 
+            // left_btn
+            // 
+            this.left_btn.Location = new System.Drawing.Point(299, 113);
+            this.left_btn.Name = "left_btn";
+            this.left_btn.Size = new System.Drawing.Size(41, 41);
+            this.left_btn.TabIndex = 8;
+            this.left_btn.Text = "L";
+            this.left_btn.UseVisualStyleBackColor = true;
+            this.left_btn.Click += new System.EventHandler(this.left_btn_Click);
+            // 
+            // down_btn
+            // 
+            this.down_btn.Location = new System.Drawing.Point(357, 170);
+            this.down_btn.Name = "down_btn";
+            this.down_btn.Size = new System.Drawing.Size(41, 41);
+            this.down_btn.TabIndex = 9;
+            this.down_btn.Text = "D";
+            this.down_btn.UseVisualStyleBackColor = true;
+            this.down_btn.Click += new System.EventHandler(this.down_btn_Click);
+            // 
+            // right_btn
+            // 
+            this.right_btn.Location = new System.Drawing.Point(415, 113);
+            this.right_btn.Name = "right_btn";
+            this.right_btn.Size = new System.Drawing.Size(41, 41);
+            this.right_btn.TabIndex = 10;
+            this.right_btn.Text = "R";
+            this.right_btn.UseVisualStyleBackColor = true;
+            this.right_btn.Click += new System.EventHandler(this.right_btn_Click);
+            // 
+            // shoot_btn
+            // 
+            this.shoot_btn.Location = new System.Drawing.Point(357, 113);
+            this.shoot_btn.Name = "shoot_btn";
+            this.shoot_btn.Size = new System.Drawing.Size(41, 41);
+            this.shoot_btn.TabIndex = 11;
+            this.shoot_btn.Text = "S";
+            this.shoot_btn.UseVisualStyleBackColor = true;
+            this.shoot_btn.Click += new System.EventHandler(this.shoot_btn_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(816, 403);
+            this.Controls.Add(this.shoot_btn);
+            this.Controls.Add(this.right_btn);
+            this.Controls.Add(this.down_btn);
+            this.Controls.Add(this.left_btn);
+            this.Controls.Add(this.up_btn);
             this.Controls.Add(this.display);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.send_btn);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.connect_btn);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
@@ -159,10 +185,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button connect_btn;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button send_btn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox display;
+        private System.Windows.Forms.Button up_btn;
+        private System.Windows.Forms.Button left_btn;
+        private System.Windows.Forms.Button down_btn;
+        private System.Windows.Forms.Button right_btn;
+        private System.Windows.Forms.Button shoot_btn;
     }
 }
 

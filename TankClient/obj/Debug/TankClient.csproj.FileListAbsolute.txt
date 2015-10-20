@@ -25,3 +25,12 @@ C:\Users\User\Documents\New folder\TankClient\TankClient\obj\Debug\TankClient.cs
 C:\Users\User\Documents\New folder\TankClient\TankClient\obj\Debug\TankClient.Form1.resources
 C:\Users\User\Documents\New folder\TankClient\TankClient\obj\Debug\TankClient.Properties.Resources.resources
 C:\Users\User\Documents\New folder\TankClient\TankClient\obj\Debug\TankClient.csproj.GenerateResource.Cache
+D:\TankGame\New Version\TankClient\TankClient\bin\Debug\TankClient.exe.config
+D:\TankGame\New Version\TankClient\TankClient\obj\Debug\TankClient.exe
+D:\TankGame\New Version\TankClient\TankClient\obj\Debug\TankClient.pdb
+D:\TankGame\New Version\TankClient\TankClient\bin\Debug\TankClient.exe
+D:\TankGame\New Version\TankClient\TankClient\bin\Debug\TankClient.pdb
+D:\TankGame\New Version\TankClient\TankClient\obj\Debug\TankClient.csprojResolveAssemblyReference.cache
+D:\TankGame\New Version\TankClient\TankClient\obj\Debug\TankClient.Form1.resources
+D:\TankGame\New Version\TankClient\TankClient\obj\Debug\TankClient.Properties.Resources.resources
+D:\TankGame\New Version\TankClient\TankClient\obj\Debug\TankClient.csproj.GenerateResource.Cache

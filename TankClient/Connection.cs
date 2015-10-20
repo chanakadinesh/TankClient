@@ -16,64 +16,48 @@ namespace TankClient
         private int client_port = 7000;
         private TcpClient client = null;
         private TcpListener client_listener = null;
-        private string msg = "JOIN#";
+        //private string msg = "JOIN#";
         private NetworkStream serverStream;
         private Thread Listner_Thread;
         private Thread ServerClient_Thread;
         private Form1 gui;
 
-        public Connection(Form1 f) {
+        public Connection(Form1 f)
+        {
             this.gui = f;
         }
 
-        public void sendToServer(string m){
-            this.msg = m;
-        }
-
-        public void writing_on_client()
+        public void writing_on_server(string msg)
         {
-
             this.client = new TcpClient();
-
             try
             {
                 this.client.Connect(IP, server_port);
-                while (true)
+                if (this.client.Connected)
                 {
-                    if (this.client.Connected)
+                    if (msg != "")
                     {
-                        //To write to the socket
-                        // gui.WriteDisplay("Connection Established...!");
-                        if (msg != "")
-                        {
-                            NetworkStream clientStream = client.GetStream();
-
-                            //Create objects for writing across stream
-                            BinaryWriter writer = new BinaryWriter(clientStream);
-
-                            Byte[] tempStr = Encoding.ASCII.GetBytes(msg);
-
-                            //writing to the port                
-                            writer.Write(tempStr);
-                            gui.WriteDisplay("\t Data: " + msg + " is written to Server");
-                            msg = "";
-                            writer.Close();
-                            clientStream.Close();
-                        }
-                        Thread.Sleep(10);
+                        NetworkStream clientStream = client.GetStream();
+                        BinaryWriter writer = new BinaryWriter(clientStream);
+                        Byte[] tempStr = Encoding.ASCII.GetBytes(msg);
+                        writer.Write(tempStr);
+                        gui.WriteDisplay("Message : " + msg + " sent to Server");
+                        writer.Close();
+                        clientStream.Close();
                     }
-                    else {
-                        this.client.Connect(IP, server_port);
-                    }
+                }
+                else
+                {
+                    gui.WriteDisplay("Couldn't connect to the server");
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Communication (WRITING) to  on Server Failed! \n " + e.Message);
+                gui.WriteDisplay("Communication (WRITING) to  on Server Failed! \n " + e.Message);
             }
             finally
             {
-                this.client.Close();
+                client.Close();
             }
         }
 
@@ -109,7 +93,7 @@ namespace TankClient
                         }
 
                         String reply = Encoding.UTF8.GetString(inputStr.ToArray());
-                       // Console.WriteLine("Server Reply: " + reply);
+                        // Console.WriteLine("Server Reply: " + reply);
                         gui.DisplayServerMessage(reply);
 
                     }
@@ -132,14 +116,15 @@ namespace TankClient
 
         public void startClient()
         {
-            Listner_Thread = new Thread(new ThreadStart(this.writing_on_client));
+            Listner_Thread = new Thread(() => this.writing_on_server("JOIN#"));
             ServerClient_Thread = new Thread(new ThreadStart(this.receiving_from_client));
             Listner_Thread.IsBackground = true;
             ServerClient_Thread.IsBackground = true;
             Listner_Thread.Start();
             ServerClient_Thread.Start();
         }
-       /* public void stopClient() {
+
+        /* public void stopClient() {
             try
             {
                 if (Listner_Thread.IsAlive) { Listner_Thread.Abort(); }

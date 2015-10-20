@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace TankClient
 {
@@ -25,7 +26,7 @@ namespace TankClient
                 this.Invoke(new Action<string>(WriteDisplay), new object[] { msg });
                 return;
             }
-            display.Text = msg+"\r\n";
+            display.Text += msg+"\r\n";
           //  serverDisplay.ScrollToCaret();
         }
         public void DisplayServerMessage(String msg)
@@ -39,39 +40,42 @@ namespace TankClient
             //  serverDisplay.ScrollToCaret();
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             con = new Connection(this);
             con.startClient();
-            this.send_btn.Enabled=true;
+            connect_btn.Enabled = false;
+            left_btn.Enabled = true;
+            up_btn.Enabled = true;
+            right_btn.Enabled = true;
+            down_btn.Enabled = true;
+            shoot_btn.Enabled = true;
         }
 
-        private void send_btn_Click(object sender, EventArgs e)
+        private void up_btn_Click(object sender, EventArgs e)
         {
-              string msg = "";
-                switch(comboBox1.SelectedIndex){
-                    case 1:
-                        msg = "UP#";
-                        break;
-                    case 2:
-                        msg="DOWN#";
-                        break;
-                    case 3:
-                        msg="LEFT#";
-                        break;
-                    case 4:
-                        msg="RIGHT#";
-                        break;
-                    case 5:
-                        msg = "SHOOT#";
-                        break;
-                    default:
-                        msg="";
-                        break;
-                }
-                con.sendToServer(msg);
-               // this.comboBox1.SelectedIndex = 0;
-            }
+            ThreadPool.QueueUserWorkItem(new WaitCallback(state => con.writing_on_server("UP#")));
+        }
+
+        private void left_btn_Click(object sender, EventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(state => con.writing_on_server("LEFT#")));
+        }
+        private void right_btn_Click(object sender, EventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(state => con.writing_on_server("RIGHT#")));
+        }
+
+        private void down_btn_Click(object sender, EventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(state => con.writing_on_server("DOWN#")));
+        }
+
+        private void shoot_btn_Click_1(object sender, EventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(state => con.writing_on_server("SHOOT#")));
+        }
+
+
     }
 }
