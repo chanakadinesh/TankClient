@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.serverDisplay = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.playground = new System.Windows.Forms.TextBox();
             this.connect_btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.display = new System.Windows.Forms.TextBox();
@@ -62,19 +62,19 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Display";
             // 
-            // textBox2
+            // playground
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Forte", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Strikeout))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(521, 38);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(258, 227);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = resources.GetString("textBox2.Text");
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.playground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.playground.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.playground.Font = new System.Drawing.Font("Forte", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Strikeout))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playground.Location = new System.Drawing.Point(521, 38);
+            this.playground.Multiline = true;
+            this.playground.Name = "playground";
+            this.playground.ReadOnly = true;
+            this.playground.Size = new System.Drawing.Size(258, 227);
+            this.playground.TabIndex = 2;
+            this.playground.Text = resources.GetString("playground.Text");
+            this.playground.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // connect_btn
             // 
@@ -170,7 +170,7 @@
             this.Controls.Add(this.display);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.connect_btn);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.playground);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.serverDisplay);
             this.Name = "Form1";
@@ -183,7 +183,7 @@
 
         private System.Windows.Forms.TextBox serverDisplay;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox playground;
         private System.Windows.Forms.Button connect_btn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox display;

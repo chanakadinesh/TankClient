@@ -8,5 +8,9 @@ namespace TankClient
 {
     class Parser
     {
+        public string get_playground() {
+            
+            return "";
+        }
     }
 }

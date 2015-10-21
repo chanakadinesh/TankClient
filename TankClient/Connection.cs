@@ -14,6 +14,7 @@ namespace TankClient
         private string IP = "127.0.0.1";
         private int server_port = 6000;
         private int client_port = 7000;
+        
         private TcpClient client = null;
         private TcpListener client_listener = null;
         //private string msg = "JOIN#";

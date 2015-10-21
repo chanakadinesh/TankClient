@@ -20,6 +20,18 @@ namespace TankClient
             InitializeComponent();
         }
 
+        public void draw_play_ground(String msg)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(draw_play_ground), new object[] { msg });
+                return;
+            }
+            Console.WriteLine(playground.Text);
+            playground.Text = msg;
+            
+        }
+
         public void WriteDisplay(String msg) {
             if (InvokeRequired)
             {
@@ -50,6 +62,7 @@ namespace TankClient
             right_btn.Enabled = true;
             down_btn.Enabled = true;
             shoot_btn.Enabled = true;
+            draw_play_ground("and");
         }
 
         private void up_btn_Click(object sender, EventArgs e)
