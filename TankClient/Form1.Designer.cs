@@ -49,7 +49,7 @@
             this.serverDisplay.Multiline = true;
             this.serverDisplay.Name = "serverDisplay";
             this.serverDisplay.ReadOnly = true;
-            this.serverDisplay.Size = new System.Drawing.Size(744, 61);
+            this.serverDisplay.Size = new System.Drawing.Size(448, 61);
             this.serverDisplay.TabIndex = 0;
             // 
             // label1
