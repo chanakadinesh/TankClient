@@ -104,7 +104,7 @@ namespace TankClient
                         try
                         {
                             gui.updateGameDetails(reply);
-                            gui.refreshScoreBoard();
+                            gui.refreshAll();
                         }
                         catch (Exception e) { }
                     }

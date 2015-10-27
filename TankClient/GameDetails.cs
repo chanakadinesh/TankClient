@@ -8,11 +8,13 @@ namespace TankClient
 {
     class GameDetails
     {
-        private int myId;
+        private String myId;
         private String[,] playerData; //Name,Score,Coins,Health
         private int[,] playerLocations; //x,y,direct
         private int[,] bricks; //x,y,damageLevel
         private int[] count; //number of bricks,water,stone
+        private int[,] water;
+        private int[,] stone;
         private bool gameStarted;
         private bool gameConnected;
         Parser paser;
@@ -21,9 +23,10 @@ namespace TankClient
             paser = new Parser(this);
             gameConnected = false;
             gameStarted = false;
-            myId = 3;
+            myId = "P#";
             playerData = new String[5, 4];
             playerLocations = new int[5, 3];
+
             count = new int[3];
         }
         public bool isGameStarted
@@ -38,7 +41,7 @@ namespace TankClient
             }
         }
 
-        public int myPlayerNumber
+        public string myPlayerNumber
         {
             get
             {
@@ -49,7 +52,40 @@ namespace TankClient
                 myId = value;
             }
         }
+        public int[,] Bricks
+        {
+            get
+            {
+                return bricks;
+            }
+            set
+            {
+                bricks = value;
+            }
+        }
+        public int[,] Water
+        {
+            get
+            {
+                return water;
+            }
+            set
+            {
+                water = value;
+            }
+        }
 
+        public int[,] Stone
+        {
+            get
+            {
+                return stone;
+            }
+            set
+            {
+                stone = value;
+            }
+        }
         public bool Connected {
             get
             {

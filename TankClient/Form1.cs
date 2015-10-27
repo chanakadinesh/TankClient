@@ -100,19 +100,82 @@ namespace TankClient
             ThreadPool.QueueUserWorkItem(new WaitCallback(state => con.writing_on_server("SHOOT#")));
         }
 
-        private void playground_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //Play Ground
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             //g.C;
+
+            drawGrid(g);
+            drawBricks(g);
+            drawWater(g);
+            drawStones(g);
+            //Font f = new Font("Arial", pictureBox1.Width / 20);
+            //g.DrawString("10", f, Brushes.Green, new PointF(0 * pictureBox1.Width / 10, 0 * pictureBox1.Height / 10));
+            
+            //}
+            g.Flush();
+        }
+
+        //My Score Board
+        private void pictureBox2_Paint(object sender, PaintEventArgs e)
+        {
+           
+            Graphics g = e.Graphics;
+            Pen p2 = new Pen(Color.Blue, 2.0f);
+            Font f = new Font("Arial", pictureBox2.Width / 15);
+            String s = "My Player Name : ";
+            if (details.isGameStarted) { s += details.myPlayerNumber; }
+            s+="\nScore : " + "\nLife : " + "\nCoins :";
+            g.DrawString(s, f, Brushes.Green, new PointF(2,2));
+            g.Flush();
+        }
+
+        //Refreah the form
+        public void refreshAll(){
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action(()=>{
+                    pictureBox1.Refresh();
+                    pictureBox2.Refresh();
+                    Other_Players.Refresh();
+                }));
+                return;
+            }
+            pictureBox1.Refresh();
+            pictureBox2.Refresh();
+            Other_Players.Refresh();
+        }
+
+        //Other players' details
+        private void Other_Players_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Pen p2 = new Pen(Color.Blue, 2.0f);
+            Font f = new Font("Arial", Other_Players.Width / 20);
+            String s = "Name\tHealth\tScore\tCoins";
+            //if (details.Connected) { s += details.myPlayerNumber; }
+            s += "\nP1\t"+56 +"\t"+56+"\t"+456+ "\nP2  " + "\nP3 ";
+            g.DrawString(s, f, Brushes.Green, new PointF(2, 2));
+            g.Flush();
+
+        }
+
+        /****
+         * drawing playground
+         * ** drawing grid;
+         * ** drawing bricks with conditions;
+         * ** drawing water and stones;
+         * ** drawing players;
+         * ** drawing lifepacks;
+         * ** drawing conis;
+         * ** drawing bullets;
+         * *******/
+        private void drawGrid(Graphics g) {
             Pen p1 = new Pen(Color.Red, 2.0f);
             Pen p2 = new Pen(Color.Blue, 2.0f);
             SolidBrush b1 = new SolidBrush(Color.White);
-            SolidBrush b2 = new SolidBrush(Color.FromArgb(128, 179, 238, 58));
+          //  SolidBrush b2 = new SolidBrush(Color.FromArgb(128, 179, 238, 58));
             g.FillRectangle(b1, 0, 0, pictureBox1.Width, pictureBox1.Height);
             g.DrawRectangle(p1, 0, 0, pictureBox1.Width, pictureBox1.Height);
             for (int i = 1; i < 10; i++)
@@ -120,60 +183,67 @@ namespace TankClient
                 g.DrawLine(p2, 0, i * pictureBox1.Height / 10, pictureBox1.Width, i * pictureBox1.Height / 10);
                 g.DrawLine(p2, i * pictureBox1.Width / 10, 0, i * pictureBox1.Width / 10, pictureBox1.Height);
             }
-
-            Font f = new Font("Arial", pictureBox1.Width / 20);
-            g.DrawString("10", f, Brushes.Green, new PointF(0 * pictureBox1.Width / 10, 0 * pictureBox1.Height / 10));
-            g.FillRectangle(b2, 0 * pictureBox1.Width / 10, 0 * pictureBox1.Height / 10, 3 * pictureBox1.Width / 10, pictureBox1.Height / 10);
-            //}
-            g.Flush();
         }
-
-        
-        private void pictureBox2_Paint(object sender, PaintEventArgs e)
-        {
-            
-            //Threadtimer();
-           // String time2 = DateTime.Now.ToString("h:mm:ss");
-            Graphics g = e.Graphics;
-         //   g.Clear(Color.White);
-            Pen p2 = new Pen(Color.Blue, 2.0f);
-           // g.DrawRectangle(p2, 0, 0, pictureBox1.Width-1, pictureBox1.Height-1);
-            Font f = new Font("Arial", pictureBox2.Width / 15);
-            String s = "My Player Name : P";
-            if (details.Connected) { s += details.myPlayerNumber; }
-            s+="\nScore : " + "\nLife : " + "\nCoins :";
-            g.DrawString(s, f, Brushes.Green, new PointF(2,2));
-            g.Flush();
-        }
-
-        public void refreshPlayGround(){
-            if (InvokeRequired)
+        private void drawBricks(Graphics g) {
+            if (details.Connected)
             {
-                this.Invoke(new Action(()=>{
-                    pictureBox1.Refresh();
-                }));
-                return;
-            }
-            pictureBox1.Refresh();
-        }
-
-        public void refreshScoreBoard() {
-            if (InvokeRequired)
-            {
-                this.Invoke(new Action(() =>
+                SolidBrush b2 = new SolidBrush(Color.FromArgb(180, 205, 102, 29));
+                SolidBrush b3 = new SolidBrush(Color.FromArgb(180, 255, 127, 36));
+                SolidBrush b4 = new SolidBrush(Color.FromArgb(180, 244, 164, 96));
+                SolidBrush b1 = new SolidBrush(Color.FromArgb(180, 205, 55, 0));
+                int[,] bricks = details.Bricks;
+                //foreach (int[] loc in bricks) { 
+                int len = bricks.Length;
+                for (int i = 0; i < len / 3; i++)
                 {
-                    pictureBox2.Refresh();
-                }));
-                return;
+                    if (bricks[i, 2] == 0)
+                    {
+                        g.FillRectangle(b1, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                    }
+                    else if (bricks[i, 2] == 1)
+                    {
+                        g.FillRectangle(b2, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                    }
+                    else if (bricks[i, 2] == 2)
+                    {
+                        g.FillRectangle(b3, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                    }
+                    else if (bricks[i, 2] == 3)
+                    {
+                        g.FillRectangle(b4, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                    }
+                    else { }
+                }
             }
-            pictureBox2.Refresh();
         }
-
-        private void Other_Players_Paint(object sender, PaintEventArgs e)
-        {
-
+        private void drawWater(Graphics g) {
+            if (details.Connected) {
+                SolidBrush b1 = new SolidBrush(Color.FromArgb(150, 0,154,205));
+                int[,] water = details.Water;
+                //foreach (int[] loc in bricks) { 
+                int len = water.Length;
+                for (int i = 0; i < len / 2; i++)
+                {
+                    g.FillRectangle(b1, water[i, 0] * pictureBox1.Width / 10, water[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                }
+            }
         }
-
-
+        private void drawStones(Graphics g) {
+            if (details.Connected)
+            {
+                SolidBrush b1 = new SolidBrush(Color.FromArgb(150, 105,105,105));
+                int[,] stone = details.Stone;
+                //foreach (int[] loc in bricks) { 
+                int len = stone.Length;
+                for (int i = 0; i < len / 2; i++)
+                {
+                    g.FillRectangle(b1, stone[i, 0] * pictureBox1.Width / 10, stone[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                }
+            }
+        }
+        private void drawPlayers(Graphics g) { }
+        private void drawLifePacks(Graphics g) { }
+        private void drawCoins(Graphics g) { }
+        private void drawBullets(Graphics g) { }
     }
 }

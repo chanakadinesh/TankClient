@@ -160,16 +160,16 @@
             // 
             this.pictureBox2.Location = new System.Drawing.Point(565, 12);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(240, 132);
+            this.pictureBox2.Size = new System.Drawing.Size(240, 116);
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox2_Paint);
             // 
             // Other_Players
             // 
-            this.Other_Players.Location = new System.Drawing.Point(567, 153);
+            this.Other_Players.Location = new System.Drawing.Point(567, 134);
             this.Other_Players.Name = "Other_Players";
-            this.Other_Players.Size = new System.Drawing.Size(237, 119);
+            this.Other_Players.Size = new System.Drawing.Size(237, 138);
             this.Other_Players.TabIndex = 14;
             this.Other_Players.TabStop = false;
             this.Other_Players.Paint += new System.Windows.Forms.PaintEventHandler(this.Other_Players_Paint);
@@ -178,6 +178,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(838, 521);
             this.Controls.Add(this.Other_Players);
             this.Controls.Add(this.pictureBox2);
