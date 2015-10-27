@@ -8,15 +8,25 @@ namespace TankClient
 {
     class Parser
     {
-        public string get_playground() {
-            string s="";
-            for(int j=0;j<10;j++){
-                for (int i = 0; i < 10; i++) {
-                    s +="N ";
-                }
-                s += "\r\n";
-            }
-                return s;
+        private GameDetails gd;
+        public Parser(GameDetails gd) {
+            this.gd = gd;
         }
+        public void ParseMessage(String s){
+            char type = s[0];
+            if (type == (char)'S' || type == (char)'S')
+            {
+                try
+                {
+                    gd.myPlayerNumber = (int)Char.GetNumericValue(s[3]);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Paser : "+e.Message);
+                }
+                gd.Connected = true;
+            }
+            
+        }        
     }
 }

@@ -22,12 +22,13 @@ namespace TankClient
         private Thread Listner_Thread;
         private Thread ServerClient_Thread;
         private Form1 gui;
-        private Parser paser;
-
+       // private Parser paser;
+     //   private GameDetails details;
         public Connection(Form1 f)
         {
             this.gui = f;
-            paser = new Parser();
+            
+       //     paser = new Parser();
         }
 
         public void writing_on_server(string msg)
@@ -98,7 +99,14 @@ namespace TankClient
                         String reply = Encoding.UTF8.GetString(inputStr.ToArray());
                         // Console.WriteLine("Server Reply: " + reply);
                         gui.DisplayServerMessage(reply);
-                        gui.draw_play_ground(paser.get_playground());
+                        //gui.draw_play_ground(paser.get_playground());
+                        //paser.ParserMessage(reply);
+                        try
+                        {
+                            gui.updateGameDetails(reply);
+                            gui.refreshScoreBoard();
+                        }
+                        catch (Exception e) { }
                     }
 
                 }
