@@ -98,7 +98,7 @@ namespace TankClient
 
                         String reply = Encoding.UTF8.GetString(inputStr.ToArray());
                         // Console.WriteLine("Server Reply: " + reply);
-                        gui.DisplayServerMessage(reply);
+                        Console.WriteLine(reply);
                         //gui.draw_play_ground(paser.get_playground());
                         //paser.ParserMessage(reply);
                         try
