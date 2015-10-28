@@ -201,21 +201,36 @@ namespace TankClient
                         //g.FillRectangle(b1, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
                         Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\brick1.jpg");
                         Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
-                        Rectangle srcRect = new Rectangle(bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10,10* pictureBox1.Width / 51,10* pictureBox1.Height / 51);
+                        Rectangle srcRect = new Rectangle(bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10,100* pictureBox1.Width / 517,100* pictureBox1.Height / 517);
                         GraphicsUnit units = GraphicsUnit.Pixel;
                         g.DrawImage(newImage,srcRect, destRect, units);
                     }
                     else if (bricks[i, 2] == 1)
                     {
-                        g.FillRectangle(b2, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                        //g.FillRectangle(b2, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                        Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\brick2.jpg");
+                        Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
+                        Rectangle srcRect = new Rectangle(bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10,400* pictureBox1.Width / 518,400* pictureBox1.Height / 518);
+                        GraphicsUnit units = GraphicsUnit.Pixel;
+                        g.DrawImage(newImage, srcRect, destRect, units);
                     }
                     else if (bricks[i, 2] == 2)
                     {
-                        g.FillRectangle(b3, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                        //g.FillRectangle(b3, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                        Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\brick3.jpg");
+                        Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
+                        Rectangle srcRect = new Rectangle(bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, 100 * pictureBox1.Width / 307, 100 * pictureBox1.Height / 307);
+                        GraphicsUnit units = GraphicsUnit.Pixel;
+                        g.DrawImage(newImage, srcRect, destRect, units);
                     }
                     else if (bricks[i, 2] == 3)
                     {
-                        g.FillRectangle(b4, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                        //g.FillRectangle(b4, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                        Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\brick4.jpg");
+                        Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
+                        Rectangle srcRect = new Rectangle(bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, 100 * pictureBox1.Width / 101, 100 * pictureBox1.Height / 101);
+                        GraphicsUnit units = GraphicsUnit.Pixel;
+                        g.DrawImage(newImage, srcRect, destRect, units);
                     }
                     else { }
                 }
@@ -229,7 +244,12 @@ namespace TankClient
                 int len = water.Length;
                 for (int i = 0; i < len / 2; i++)
                 {
-                    g.FillRectangle(b1, water[i, 0] * pictureBox1.Width / 10, water[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                    //g.FillRectangle(b1, water[i, 0] * pictureBox1.Width / 10, water[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                    Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\water.png");
+                    Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
+                    Rectangle srcRect = new Rectangle(water[i, 0] * pictureBox1.Width / 10, water[i, 1] * pictureBox1.Height / 10, 100 * pictureBox1.Width / 261, 100 * pictureBox1.Height / 261);
+                    GraphicsUnit units = GraphicsUnit.Pixel;
+                    g.DrawImage(newImage, srcRect, destRect, units);
                 }
             }
         }
@@ -242,7 +262,12 @@ namespace TankClient
                 int len = stone.Length;
                 for (int i = 0; i < len / 2; i++)
                 {
-                    g.FillRectangle(b1, stone[i, 0] * pictureBox1.Width / 10, stone[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                    //g.FillRectangle(b1, stone[i, 0] * pictureBox1.Width / 10, stone[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                    Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\stone.jpg");
+                    Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
+                    Rectangle srcRect = new Rectangle(stone[i, 0] * pictureBox1.Width / 10, stone[i, 1] * pictureBox1.Height / 10, 100 * pictureBox1.Width / 261, 100 * pictureBox1.Height / 261);
+                    GraphicsUnit units = GraphicsUnit.Pixel;
+                    g.DrawImage(newImage, srcRect, destRect, units);
                 }
             }
         }
