@@ -198,7 +198,12 @@ namespace TankClient
                 {
                     if (bricks[i, 2] == 0)
                     {
-                        g.FillRectangle(b1, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                        //g.FillRectangle(b1, bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10, pictureBox1.Width / 10, pictureBox1.Height / 10);
+                        Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\brick1.jpg");
+                        Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
+                        Rectangle srcRect = new Rectangle(bricks[i, 0] * pictureBox1.Width / 10, bricks[i, 1] * pictureBox1.Height / 10,10* pictureBox1.Width / 51,10* pictureBox1.Height / 51);
+                        GraphicsUnit units = GraphicsUnit.Pixel;
+                        g.DrawImage(newImage,srcRect, destRect, units);
                     }
                     else if (bricks[i, 2] == 1)
                     {
@@ -245,5 +250,6 @@ namespace TankClient
         private void drawLifePacks(Graphics g) { }
         private void drawCoins(Graphics g) { }
         private void drawBullets(Graphics g) { }
+
     }
 }
