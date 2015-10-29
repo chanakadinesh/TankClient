@@ -111,8 +111,6 @@ namespace TankClient
             drawWater(g);
             drawStones(g);
             drawPlayers(g);
-            drawCoins(g);
-            drawLifePacks(g);
             //Font f = new Font("Arial", pictureBox1.Width / 20);
             //g.DrawString("10", f, Brushes.Green, new PointF(0 * pictureBox1.Width / 10, 0 * pictureBox1.Height / 10));
             
@@ -334,7 +332,7 @@ namespace TankClient
                         Rectangle srcRect = new Rectangle(loc[i, 0] * pictureBox1.Width / 10, loc[i, 1] * pictureBox1.Height / 10, 160 * pictureBox1.Width / 517, 160 * pictureBox1.Height / 517);
                         GraphicsUnit units = GraphicsUnit.Pixel;
                         g.DrawImage(newImage, srcRect, destRect, units);
-                        g.DrawString("P"+i, f, Brushes.Red, new PointF(loc[i, 0] * pictureBox1.Width / 10, loc[i, 1] * pictureBox1.Height / 10));
+                        g.DrawString("P", f, Brushes.Green, new PointF(loc[i, 0] * pictureBox1.Width / 10, loc[i, 1] * pictureBox1.Height / 10));
                     }
                     else
                     {
@@ -345,46 +343,14 @@ namespace TankClient
                             Rectangle srcRect = new Rectangle(loc[i, 0] * pictureBox1.Width / 10, loc[i, 1] * pictureBox1.Height / 10, 160 * pictureBox1.Width / 517, 160 * pictureBox1.Height / 517);
                             GraphicsUnit units = GraphicsUnit.Pixel;
                             g.DrawImage(newImage, srcRect, destRect, units);
-                            g.DrawString(player[i,0], f, Brushes.Red, new PointF(loc[i, 0] * pictureBox1.Width / 10, loc[i, 1] * pictureBox1.Height / 10));
+                            g.DrawString("P", f, Brushes.Green, new PointF(loc[i, 0] * pictureBox1.Width / 10, loc[i, 1] * pictureBox1.Height / 10));
                         }
                     }
                 }
             }
         }
-        private void drawLifePacks(Graphics g) {
-            List<lifepack> lp = details.LifePacks;
-            Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\lifepack.png");
-            Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
-            Font f = new Font("Arial", Other_Players.Width / 30);
-            if (lp.Count > 0)
-            {
-                for (int i = 0; i < lp.Count; i++)
-                {
-                    lifepack c = lp.ElementAt(i);
-                    Rectangle srcRect = new Rectangle(c.X * pictureBox1.Width / 10, c.Y * pictureBox1.Height / 10, 100 * pictureBox1.Width / 261, 100 * pictureBox1.Height / 261);
-                    GraphicsUnit units = GraphicsUnit.Pixel;
-                    g.DrawImage(newImage, srcRect, destRect, units);
-                    g.DrawString("L:" + c.L , f, Brushes.Blue, new PointF((c.X) * pictureBox1.Width / 10, (c.Y) * pictureBox1.Height / 10));
-                    //Console.WriteLine(c.X + "/" + c.Y);
-                }
-            }
-        }
-        private void drawCoins(Graphics g) {
-            List<coin> cl = details.Coins;
-            Image newImage = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "img\\coin.png");
-            Rectangle destRect = new Rectangle(0, 0, pictureBox1.Height, pictureBox1.Width);
-            Font f = new Font("Arial", Other_Players.Width / 30);
-            if(cl.Count>0){
-                for(int i=0;i<cl.Count;i++){
-                    coin c = cl.ElementAt(i);
-                    Rectangle srcRect = new Rectangle(c.X * pictureBox1.Width / 10, c.Y * pictureBox1.Height / 10, 100 * pictureBox1.Width / 261, 100 * pictureBox1.Height / 261);
-                    GraphicsUnit units = GraphicsUnit.Pixel;
-                    g.DrawImage(newImage, srcRect, destRect, units);
-                    g.DrawString("L:"+c.L+"\n/V:"+c.V, f, Brushes.Blue, new PointF((c.X) * pictureBox1.Width / 10, (c.Y) * pictureBox1.Height / 10));
-                    //Console.WriteLine(c.X + "/" + c.Y);
-                }
-            }
-        }
+        private void drawLifePacks(Graphics g) { }
+        private void drawCoins(Graphics g) { }
         private void drawBullets(Graphics g) { }
 
     }
