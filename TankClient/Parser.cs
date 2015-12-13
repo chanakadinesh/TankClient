@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace TankClient
 {
     class Parser
     {
         private GameDetails gd;
+        public static Stopwatch watch = Stopwatch.StartNew();
         public Parser(GameDetails gd) {
             this.gd = gd;
         }
@@ -158,7 +160,7 @@ namespace TankClient
             int ly = Convert.ToInt32(y[1]);
             int lt = Convert.ToInt32(parts[2]);
             int lv = Convert.ToInt32(parts[3]);
-            co.Add(new coin(lx, ly, lt, lv));
+            co.Add(new coin(lx, ly, lt, lv,watch));
             gd.Coins = co;
         }
         private void parseLifepacks(string s) {
@@ -170,7 +172,7 @@ namespace TankClient
             int ly = Convert.ToInt32(y[1]);
             int lt = Convert.ToInt32(parts[2]);
             //int lv = Convert.ToInt32(parts[3]);
-            lp.Add(new lifepack(lx, ly, lt));
+            lp.Add(new lifepack(lx, ly, lt,watch));
             gd.LifePacks = lp;
         }
     }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace TankClient
+
 {
     class GameDetails
     {
@@ -140,6 +142,33 @@ namespace TankClient
         }
         public void update(String s) {
             paser.ParseMessage(s);
+            
+            //coin update
+            List<coin> temp = coinList;
+            for (int i = 0; i < coinList.Count; i++) {
+                //Console.WriteLine("Dead \t" + coinList[i].DeadTime +"\t"+ coinList[i].X + coinList[i].Y);
+                //Console.WriteLine("watch"+Parser.watch.ElapsedMilliseconds);
+
+                if (coinList[i].DeadTime < Parser.watch.ElapsedMilliseconds)
+                {
+                    //Console.WriteLine("removed \n");
+                    temp.Remove(temp[i]);
+                }
+            }
+            coinList = temp;
+
+            //life pack update
+            List<lifepack> temp2 = lifepackList;
+            for (int i = 0; i < lifepackList.Count; i++)
+            {
+                if (lifepackList[i].DeadTime < Parser.watch.ElapsedMilliseconds)
+                {
+                    temp2.Remove(temp2[i]);
+                    Console.WriteLine("removed \n");
+                }
+            }
+            lifepackList = temp2;
+
         }
         
         public int[,] playerLoc{
@@ -161,13 +190,18 @@ namespace TankClient
     class coin
     {
         private int x, y, l, v;
-        public coin(int x, int y, int l, int v)
+        private float deadTime;
+        public coin(int x, int y, int l, int v,Stopwatch watch)
         {
             this.x = x;
             this.y = y;
             this.l = l;
             this.v = v;
+            deadTime = watch.ElapsedMilliseconds + (float)l;
         }
+        public float DeadTime{
+            get { return deadTime; }
+        } 
         public int X{
             get { return x; }
             set { x = value; }
@@ -192,16 +226,22 @@ namespace TankClient
     class lifepack
     {
         private int x,y,l;
-        public lifepack(int x, int y, int l)
+        private float deadTime;
+        public lifepack(int x, int y, int l, Stopwatch watch)
         {
             this.x=x;
             this.y=y;
             this.l=l;
+            deadTime = watch.ElapsedMilliseconds + (float)l;
         }
         public int X{
             get { return x; }
             set { x = value; }
         }
+        public float DeadTime
+        {
+            get { return deadTime; }
+        } 
         public int Y
         {
             get { return y; }
