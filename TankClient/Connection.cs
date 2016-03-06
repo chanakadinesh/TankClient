@@ -11,7 +11,7 @@ namespace TankClient
 {
     class Connection
     {
-        private string IP = "127.0.0.1";
+        private string IP = "127.1.0.1";
         private int server_port = 6000;
         private int client_port = 7000;
         
